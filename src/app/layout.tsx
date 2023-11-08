@@ -3,7 +3,7 @@ import { GeistSans, GeistMono } from "geist/font";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Bahasaf",
+  title: "bahasaf by 0xN1",
   description: "Buat bahasa korang sendiri!",
 };
 

@@ -10,7 +10,8 @@ export const encodeText = (text: string, substituteChar: string) => {
 
   // repeat each of the syllable and replace first character with 'f'
   const moddedSyllables = syllables?.map((word) => {
-    // if word starts with 'ng' / 'ny' / 'kh' / 'sy', replace with 'f'
+    // if word starts with 'ng' / 'ny' / 'kh' / 'sy', replace with 'f'.
+    // might need to add more, but this is the most common one.
     // eg: 'ng' -> 'f'
     if (word.match(/^(ng|ny|kh|sy)/)) {
       // replace first 2 characters with 'f'
@@ -24,25 +25,5 @@ export const encodeText = (text: string, substituteChar: string) => {
   });
 
   const result = moddedSyllables?.join(" ");
-  return result;
-};
-
-export const decodeText = (text: string, substituteChar: string) => {
-  const regex =
-    /(?:kh|n[yg]|sy|[bcdfghjklmnpqrstvwxyz])*(?:a(?:[iu](?!(?:kh|n[yg]|sy|[bcdfghjklmnpqrstvwxyz])+\b))?|o(?:i(?!(?:kh|n[yg]|sy|[bcdfghjklmnpqrstvwxyz])+\b))?|[aeiou])(?:(?:kh|n[yg]|sy|[bcdfghjklmnpqrstvwxyz])*(?=[^a-zA-Z]|$)|(?=(kh|n[yg]|sy|[bcdfghjklmnpqrstvwxyz]))\1(?=kh|n[yg]|sy|[bcdfghjklmnpqrstvwxyz]))?/gim;
-
-  // match syllables
-  const syllables = text.match(regex) as string[];
-
-  // console.log(syllables);
-
-  // remove every 2nd element in syllables array
-  const ns = syllables.filter((_, i) => i % 2 !== 0);
-
-  // remove ns from syllables
-  const result = syllables.filter((s) => !ns.includes(s)).join(" ");
-
-  // console.log(result);
-
   return result;
 };

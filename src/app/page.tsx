@@ -9,7 +9,15 @@ export default function Home() {
         <ConvertText />
       </div>
       <footer className="text-xs">
-        bahasaf by{" "}
+        <Link
+          href="https://github.com/0xN1/bahasaf"
+          target="blank"
+          rel="noopener noreferrer"
+          className="font-semibold transition-all duration-200 hover:text-orange-700 hover:underline"
+        >
+          bahasaf
+        </Link>{" "}
+        by{" "}
         <Link
           href="https://x.com/0xneroone"
           target="blank"
