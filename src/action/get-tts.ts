@@ -6,7 +6,7 @@ const getTTS = async (text: string, origin: string) => {
       method: "POST",
       body: JSON.stringify({
         text: text,
-        pass: process.env.NEXT_PUBLIC_PASS,
+        pass: process.env.API_KEY,
       }),
     }).then((res) => res.json());
 

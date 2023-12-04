@@ -12,7 +12,7 @@ export const POST = async (req: NextRequest) => {
     });
   }
 
-  if (pass === process.env.NEXT_PUBLIC_PASS) {
+  if (pass === process.env.API_KEY) {
     try {
       const res = await fetch(
         "https://texttospeech.googleapis.com/v1/text:synthesize",
