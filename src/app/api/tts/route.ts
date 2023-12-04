@@ -15,12 +15,11 @@ export const POST = async (req: NextRequest) => {
   if (pass === process.env.API_KEY) {
     try {
       const res = await fetch(
-        "https://texttospeech.googleapis.com/v1/text:synthesize",
+        `https://texttospeech.googleapis.com/v1/text:synthesize?key=${process.env.GOOGLE_API_KEY}`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.GOOGLE_ACCESS_TOKEN}`,
           },
           body: JSON.stringify({
             voice: {
@@ -45,14 +44,15 @@ export const POST = async (req: NextRequest) => {
           audioContent: data.audioContent,
         },
       });
-    } catch (error) {}
-
-    return NextResponse.json({
-      status: 500,
-      body: {
-        message: "internal server error",
-      },
-    });
+    } catch (error) {
+      console.error(error);
+      return NextResponse.json({
+        status: 500,
+        body: {
+          message: "internal server error",
+        },
+      });
+    }
   } else {
     return NextResponse.json({
       status: 401,
